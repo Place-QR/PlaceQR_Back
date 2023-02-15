@@ -8,7 +8,6 @@ class CommentAdmin(admin.ModelAdmin):
     list_display = (
         "user",
         "place",
-        "relation"
         "description",
         "created_at",
     )

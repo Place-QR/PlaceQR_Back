@@ -9,6 +9,8 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
+# import os 
+# STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 from pathlib import Path
 
@@ -23,10 +25,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-i$qb5e9s@861r-9f#pgdmiqml3=xb$j)^47)il2q7%xq*dc4ph"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOWED_ORIGINS = ['https://qrplace.loca.lt/*', 'https://placeqr.loca.lt/swagger/']
 
 # 중요
 CSRF_TRUSTED_ORIGINS = ['https://qrplace.loca.lt/*']
@@ -80,6 +85,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 CORS_ALLOW_METHODS = [  # 허용할 옵션
@@ -103,8 +109,7 @@ CORS_ALLOW_HEADERS = [ # 허용할 헤더
     "x-requested-with",
 ]
 
-CORS_ALLOW_CREDENTIALS = True
-CORS_ORIGIN_ALLOW_ALL = True
+
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 ROOT_URLCONF = "config.urls"
 
@@ -192,3 +197,26 @@ MEDIA_ROOT = "uploads"
 
 # 사진을 노출시킬 url
 MEDIA_URL = "user-uploads/"
+
+def get_env_variable(var_name):
+  try:
+    return os.environ[var_name]
+  except KeyError:
+    error_msg = 'Set the {} environment variable'.format(var_name)
+    raise ImproperlyConfigured(error_msg)
+
+SECRET_KEY = get_env_variable('DJANGO_SECRET')
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+		'NAME': get_env_variable('DATABASE'),
+        'USER': get_env_variable('DB_USER'),
+        'PASSWORD': get_env_variable('DB_PASSWORD'),
+        'HOST': get_env_variable('DB_HOST'),
+        'PORT': get_env_variable('DB_PORT'),
+        'OPTIONS':{
+            'init_command' : "SET sql_mode='STRICT_TRANS_TABLES'"
+        }
+    }
+}
