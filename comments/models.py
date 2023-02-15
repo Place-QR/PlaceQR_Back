@@ -16,6 +16,10 @@ class Comment(CommonModel):
         default="",
     )
     
+    relation = models.TextField(
+        default="",
+    )
+    
     place = models.ForeignKey(
         "places.Place",
         null=True,
