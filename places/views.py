@@ -14,8 +14,8 @@ from .serializers import PlaceListSerializer, PhotoSerializer
 
 import qrcode
 
-url = "https://qrplace.loca.lt//"
-file_route = "C://Users//j3hea//OneDrive//바탕 화면//Data//asdf//BE_PlaceQR//uploads//" 
+url = "https://placeqr.loca.lt/"
+file_route = "C://Users//j3hea//OneDrive//바탕 화면//Data//qrplace_BE//uploads//" 
 
 
 class PlaceList(APIView):

@@ -29,7 +29,9 @@ ALLOWED_HOSTS = ["*"]
 
 
 # 중요
-CSRF_TRUSTED_ORIGINS = ['https://qrplace.loca.lt/*']
+CORS_ORIGIN_ALLOW_ALL = True
+CSRF_TRUSTED_ORIGINS = ['https://placeqr.loca.lt/*', 'https://127.0.0.1/*']
+
 
 # Application definition
 THIRD_PARTY_APPS = [
@@ -49,12 +51,12 @@ THIRD_PARTY_APPS = [
 
 
 CUSTOM_APPS = [
+    'corsheaders',
     'common.apps.CommonConfig',
     'users.apps.UsersConfig',
     'places.apps.PlacesConfig',
     'comments.apps.CommentsConfig',
     'photos.apps.PhotosConfig',
-    'corsheaders',
 ]
 
 SYSTEM_APPS = [
@@ -71,6 +73,7 @@ INSTALLED_APPS = CUSTOM_APPS + THIRD_PARTY_APPS + SYSTEM_APPS
 
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -79,7 +82,6 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "corsheaders.middleware.CorsMiddleware",
-    "django.middleware.common.CommonMiddleware",
 ]
 
 CORS_ALLOW_METHODS = [  # 허용할 옵션
