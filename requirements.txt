@@ -21,6 +21,7 @@ Jinja2==3.1.2
 MarkupSafe==2.1.2
 oauthlib==3.2.2
 packaging==23.0
+Pillow==9.4.0
 pycparser==2.21
 PyJWT==2.6.0
 pypng==0.20220715.0
@@ -36,4 +37,4 @@ sqlparse==0.4.3
 typing_extensions==4.5.0
 uritemplate==4.1.1
 urllib3==1.26.14
-pillow
+whitenoise==6.3.0
