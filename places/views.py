@@ -14,7 +14,8 @@ from .serializers import PlaceListSerializer, PhotoSerializer
 
 import qrcode
 
-url = "https://placeqr.loca.lt/"
+
+url = "https://port-0-qrplace-be-3a9t2ble58upvg.sel3.cloudtype.app/"
 file_route = "C://Users//j3hea//OneDrive//바탕 화면//Data//qrplace_BE//uploads//" 
 
 

@@ -10,8 +10,15 @@ class Comment(CommonModel):
         "users.User",
         on_delete=models.CASCADE,
         related_name="comments",
+        null = True
     )
+
+    name = models.TextField(null=True)
     
+    relation = models.TextField(null=True)
+
+    contact = models.TextField(null=True)
+
     description = models.TextField(
         default="",
     )
