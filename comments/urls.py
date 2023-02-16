@@ -1,8 +1,13 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
+from rest_framework import routers
+
+
+router = routers.DefaultRouter()
+router.register('', views.CommentViewSet)
+
+
 
 urlpatterns = [
-    path("", views.CommentList.as_view()),
-    path("<int:pk>", views.CommentDetail.as_view()),
-    path("<int:pk>/photos", views.CommentPhotos.as_view()),
+    path("", include(router.urls)),
 ]

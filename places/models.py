@@ -11,12 +11,18 @@ class Place(CommonModel):
     )
     description = models.TextField()
     address = models.CharField(max_length=250,)
+
+    photo = models.ImageField(null=True)
+    qr_img = models.ImageField(null=True)
+
+
     owner = models.ForeignKey(
         "users.User",
         on_delete=models.CASCADE,
         related_name="places",
     )
-    photo = models.ImageField(null=True)
+
+    
     
     def __str__(self) -> str:
         return self.name
