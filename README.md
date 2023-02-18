@@ -35,6 +35,9 @@ Django 4.1 version
 
 ### 📒 Etc
 ```
-현재 배포중인 서버 : CloudType 
+Server : CloudType 
+
 ERD : https://www.erdcloud.com/d/HnxLKc2GHb4imB6wR
+
+Figma : https://www.figma.com/file/1DUYdn3iERYi9pFpV6GYBp/%EB%9D%BC%EB%9D%BC_%EB%B0%A9%EB%AA%85%EB%A1%9D?node-id=0%3A1&t=JuHMQ40LX9VbmBoi-0
 ```
