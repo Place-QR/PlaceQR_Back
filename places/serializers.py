@@ -22,11 +22,7 @@ class PlaceListSerializer(serializers.ModelSerializer):
         request = self.context["request"]
         return place.owner == request.user
     
-# class PhotoSerializer(serializers.ModelSerializer):
-    
-#     class Meta:
-#         model = Place
-#         fields = (
-#             "file",
-#         )
-    
+class PlaceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Place
+        fields = "__all__"

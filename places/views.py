@@ -1,3 +1,4 @@
+from rest_framework import viewsets
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated
 from . import serializers
@@ -8,16 +9,21 @@ from rest_framework.exceptions import (
     PermissionDenied,
     NotAuthenticated,
 )
+# from rest_framework import viewsets
 
 from .models import Place
-from .serializers import PlaceListSerializer, PhotoSerializer
+from .serializers import *
 
 import qrcode
 
 
 url = "https://port-0-qrplace-be-3a9t2ble58upvg.sel3.cloudtype.app/"
-file_route = "C://Users//j3hea//OneDrive//바탕 화면//Data//qrplace_BE//uploads//" 
+file_route = "C://Users//j3hea//OneDrive//바탕 화면//Data//qrplace_BE//uploads//"
 
+
+class PlaceViewset(viewsets.ModelViewSet):
+    serializer_class = PlaceSerializer
+    queryset = Place.objects.all()
 
 class PlaceList(APIView):
     
@@ -50,7 +56,7 @@ class PlaceList(APIView):
 
         else:
             return Response(serializer.errors)
-        
+    
 
 class PlaceDetail(APIView):
     
@@ -102,26 +108,26 @@ class PlaceDetail(APIView):
     
   
   
-class PlacePhoto(APIView):
+# class PlacePhoto(APIView):
     
-    permission_classes = [IsAuthenticatedOrReadOnly]
+#     permission_classes = [IsAuthenticatedOrReadOnly]
 
-    def get_object(self, pk):
-        try:
-            return Place.objects.get(pk=pk)
-        except Place.DoesNotExist:
-            raise NotFound
+#     def get_object(self, pk):
+#         try:
+#             return Place.objects.get(pk=pk)
+#         except Place.DoesNotExist:
+#             raise NotFound
 
-    def post(self, request, pk):
-        place = self.get_object(pk)
-        if not request.user.is_authenticated:
-            raise NotAuthenticated
-        if request.user != place.owner:
-            raise PermissionDenied
-        serializer = PlaceListSerializer(data=request.data)
-        if serializer.is_valid():
-            photo = serializer.save(place=place)
-            serializer = PlaceListSerializer(photo)
-            return Response(serializer.data)
-        else:
-            return Response(serializer.errors)
+#     def post(self, request, pk):
+#         place = self.get_object(pk)
+#         if not request.user.is_authenticated:
+#             raise NotAuthenticated
+#         if request.user != place.owner:
+#             raise PermissionDenied
+#         serializer = PlaceListSerializer(data=request.data)
+#         if serializer.is_valid():
+#             photo = serializer.save(place=place)
+#             serializer = PlaceListSerializer(photo)
+#             return Response(serializer.data)
+#         else:
+#             return Response(serializer.errors)

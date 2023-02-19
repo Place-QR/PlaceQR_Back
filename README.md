@@ -32,8 +32,10 @@ Django 4.1 version
 ```
 
 
-
 ### 📒 Etc
+```
+현재 배포중인 서버 : CloudType 
+
 ```
 Server : CloudType 
 

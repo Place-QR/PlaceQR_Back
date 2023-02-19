@@ -58,11 +58,11 @@ THIRD_PARTY_APPS = [
 
 CUSTOM_APPS = [
     'corsheaders',
-    'common.apps.CommonConfig',
-    'users.apps.UsersConfig',
-    'places.apps.PlacesConfig',
-    'comments.apps.CommentsConfig',
-    'photos.apps.PhotosConfig',
+    'common',
+    'users',
+    'places',
+    'comments',
+    'photos',
 ]
 
 SYSTEM_APPS = [
