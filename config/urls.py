@@ -22,11 +22,12 @@ schema_view = get_schema_view(
 
 router = routers.DefaultRouter()
 
+
 urlpatterns = [
     
     # app url
-    path("", include(router.urls)),
     path("admin/", admin.site.urls),
+    path('', include(router.urls)),
     path("places/", include("places.urls")),
     path("comments/", include("comments.urls")),
     path("users/", include("users.urls")),
