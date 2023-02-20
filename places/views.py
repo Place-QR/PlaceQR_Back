@@ -1,6 +1,7 @@
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated
 from . import serializers
+from rest_framework.views import APIView
 from rest_framework.status import HTTP_204_NO_CONTENT, HTTP_200_OK
 from rest_framework.response import Response
 from rest_framework.exceptions import (
@@ -11,6 +12,7 @@ from rest_framework.exceptions import (
 # from rest_framework import viewsets
 
 from .models import Place
+from comments.models import Comment
 from .serializers import *
 
 
@@ -48,6 +50,14 @@ class PlaceViewset(viewsets.ModelViewSet):
         else:
             return Response(serializer.errors)
 
+
+class PlaceCommentsVeiwset(APIView):
+    def get(self, request, pk):
+        serializer = PlaceCommentSerializer(Comment.objects.filter(place=pk), many=True)
+        return Response(serializer.data)
+
+
+    
 
 
 
