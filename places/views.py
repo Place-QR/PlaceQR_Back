@@ -21,7 +21,7 @@ import os
 
 
 url = "https://www.placeqr.store/"
-file_route = str(os.getcwd()).replace("\\", "//") + "//user-uploads//qr//"
+file_route = str(os.getcwd()).replace("\\", "//") + "/user-uploads/qr/"
 
 
 class PlaceViewset(viewsets.ModelViewSet):
