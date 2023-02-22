@@ -11,7 +11,8 @@ class Comment(CommonModel):
         on_delete=models.CASCADE,
         related_name="comments",
         blank=True,
-        default="None"
+        default="None",
+        null=True
     )
 
     name = models.TextField(null=True)
