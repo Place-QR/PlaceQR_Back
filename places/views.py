@@ -17,10 +17,11 @@ from .serializers import *
 
 
 import qrcode
+import os
 
 
-url = "http://127.0.0.1:8000/"
-file_route = "C://Users//j3hea//OneDrive//바탕 화면//Data//PlaceQR_Back//uploads//qr//"
+url = "https://www.placeqr.store/"
+file_route = str(os.getcwd()).replace("\\", "//") + "//uploads//qr//"
 
 
 class PlaceViewset(viewsets.ModelViewSet):
