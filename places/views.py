@@ -21,7 +21,7 @@ import os
 
 
 url = "https://www.placeqr.store/"
-file_route = str(os.getcwd()).replace("\\", "//") + "//uploads//qr//"
+file_route = str(os.getcwd()).replace("\\", "//") + "//user-uploads//qr//"
 
 
 class PlaceViewset(viewsets.ModelViewSet):
@@ -30,7 +30,7 @@ class PlaceViewset(viewsets.ModelViewSet):
 
 
     def create(self, request, *args, **kwrgs):
-        os.makedirs(str(os.getcwd()).replace("\\", "//") + "//uploads//qr", exist_ok=True)
+        os.makedirs(str(os.getcwd()).replace("\\", "//") + "//user-uploads//qr", exist_ok=True)
 
 
         
