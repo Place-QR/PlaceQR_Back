@@ -21,7 +21,7 @@ import os
 
 
 url = "https://www.placeqr.store/"
-file_route =  "//user-uploads//qr//"
+file_route = str(os.getcwd()).replace("\\", "//") + "//user-uploads//qr//"
 
 
 class PlaceViewset(viewsets.ModelViewSet):
@@ -30,7 +30,7 @@ class PlaceViewset(viewsets.ModelViewSet):
 
 
     def create(self, request, *args, **kwrgs):
-        os.makedirs("//user-uploads//qr", exist_ok=True)
+        os.makedirs(str(os.getcwd()).replace("\\", "//") + "//uploads//qr", exist_ok=True)
 
 
         
@@ -43,10 +43,6 @@ class PlaceViewset(viewsets.ModelViewSet):
             
             case = Place.objects.get(pk=PlaceSerializer(place).data["id"])
             case.qr_img = file_route + "qr" + str(PlaceSerializer(place).data["id"]) + ".png"
-            case.save()
-
-            temp = Place.objects.get(id=PlaceSerializer(place).data["id"])
-            temp.qr_img = url + "user-uploads/" + str(PlaceSerializer(place).data["id"]) + ".png"
 
             return Response(PlaceSerializer(place).data)
 
