@@ -41,7 +41,7 @@ class PlaceViewset(viewsets.ModelViewSet):
             img.save(file_route + "qr" + str(PlaceSerializer(place).data["id"]) + ".png")
             
             case = Place.objects.get(pk=PlaceSerializer(place).data["id"])
-            case.qr_img = file_route + "qr" + str(PlaceSerializer(place).data["id"]) + ".png"
+            case.qr_img = "qr/qr" + str(PlaceSerializer(place).data["id"]) + ".png"
             case.save()
 
             return Response(PlaceSerializer(place).data)
