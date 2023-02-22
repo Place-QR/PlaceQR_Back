@@ -33,3 +33,10 @@ class PlaceCommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
         fields = "__all__"
+
+
+
+class PlaceCommentCountsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Comment
+        fields = "__all__"

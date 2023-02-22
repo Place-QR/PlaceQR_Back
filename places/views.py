@@ -50,12 +50,16 @@ class PlaceViewset(viewsets.ModelViewSet):
             return Response(serializer.errors)
 
 
-class PlaceCommentsVeiwset(APIView):
+class PlaceCommentsViewset(APIView):
     def get(self, request, pk):
         serializer = PlaceCommentSerializer(Comment.objects.filter(place=pk), many=True)
         return Response(serializer.data)
 
 
+class PlaceCommentsCountsViewset(APIView):
+    def get(self, request, pk):
+        serializer = PlaceCommentSerializer(Comment.objects.filter(place=pk), many=True)
+        return Response({"counts" : len(serializer.data)})
     
 
 

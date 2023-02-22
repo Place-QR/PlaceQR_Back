@@ -10,5 +10,6 @@ router.register("", PlaceViewset)
 urlpatterns = [
     
     path("", include(router.urls)),
-    path("<int:pk>/comments/", PlaceCommentsVeiwset.as_view()),
+    path("<int:pk>/comments/", PlaceCommentsViewset.as_view()),
+    path("<int:pk>/comments/counts", PlaceCommentsCountsViewset.as_view()),
 ]
