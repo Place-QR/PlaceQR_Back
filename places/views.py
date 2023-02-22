@@ -30,6 +30,8 @@ class PlaceViewset(viewsets.ModelViewSet):
 
 
     def create(self, request, *args, **kwrgs):
+        os.makedirs(str(os.getcwd()).replace("\\", "//") + "//uploads//qr", exist_ok=True)
+
 
         
         serializer = self.get_serializer(data=request.data)
