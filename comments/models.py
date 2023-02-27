@@ -24,6 +24,8 @@ class Comment(CommonModel):
     description = models.TextField(
         default="",
     )
+
+    photo = models.ImageField(null=True)
     
     place = models.ForeignKey(
         "places.Place",

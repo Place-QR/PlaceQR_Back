@@ -61,7 +61,6 @@ CUSTOM_APPS = [
     'users',
     'places',
     'comments',
-    'photos',
 ]
 
 SYSTEM_APPS = [
