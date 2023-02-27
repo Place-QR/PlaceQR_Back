@@ -1,7 +1,6 @@
 from rest_framework import serializers
 from .models import Place
 from comments.models import Comment
-from photos.serializers import PhotoSerializer
 
 class PlaceListSerializer(serializers.ModelSerializer):
     

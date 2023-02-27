@@ -31,7 +31,6 @@ urlpatterns = [
     path("places/", include("places.urls")),
     path("comments/", include("comments.urls")),
     path("users/", include("users.urls")),
-    path("photos/", include("photos.urls")),
 
     # swagger url
     path(r'swagger(?P<format>\.json|\.yaml)', schema_view.without_ui(cache_timeout=0), name='schema-json'),
