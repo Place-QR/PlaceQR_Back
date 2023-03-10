@@ -29,21 +29,32 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
+# Auth
+AUTH_USER_MODEL = 'users.User'
+
+
+
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = ['https://*']
 
 # 중요
 CORS_ORIGIN_ALLOW_ALL = True
-CSRF_TRUSTED_ORIGINS = ['https://placeqr.loca.lt/*', 'https://127.0.0.1/*']
+CSRF_TRUSTED_ORIGINS = ['https://placeqr.store/*', 'https://127.0.0.1/*']
 
 
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.TokenAuthentication',
-    )
+   'DEFAULT_AUTHENTICATION_CLASSES': (
+       'rest_framework.authentication.TokenAuthentication',
+       'rest_framework.authentication.SessionAuthentication',
+   ),
 }
 
+REST_AUTH_SERIALIZERS = {
+    'LOGIN_SERIALIZER': 'Accounts.serializers.LoginUserSerializer',
+}
+
+ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 
 
@@ -190,6 +201,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
+
+
 SITE_ID = 1
 ACCOUNT_EMAIL_VERIFICATION = "none"
 ACCOUNT_EMAIL_REQUIRED = True
@@ -221,9 +235,6 @@ STATICFILES_DIRS = (
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# Auth
-
-AUTH_USER_MODEL = 'users.User'
 
 # 사진파일이 업로드될 파일
 MEDIA_ROOT = "uploads"
