@@ -8,7 +8,6 @@ class RoomAdmin(admin.ModelAdmin):
     list_display = (
         "name",
         "description",
-        "address",
         "created_at",
     )
 
