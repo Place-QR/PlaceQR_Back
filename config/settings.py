@@ -40,7 +40,7 @@ CORS_ALLOWED_ORIGINS = ['https://*']
 
 # 중요
 CORS_ORIGIN_ALLOW_ALL = True
-CSRF_TRUSTED_ORIGINS = ['https://placeqr.store/*', 'https://127.0.0.1/*']
+CSRF_TRUSTED_ORIGINS = ['https://placeqr.store/*', 'https://127.0.0.1:8000/*']
 
 
 REST_FRAMEWORK = {
@@ -49,14 +49,6 @@ REST_FRAMEWORK = {
        'rest_framework.authentication.SessionAuthentication',
    ),
 }
-
-REST_AUTH_SERIALIZERS = {
-    'LOGIN_SERIALIZER': 'Accounts.serializers.LoginUserSerializer',
-}
-
-ACCOUNT_EMAIL_VERIFICATION = 'none'
-
-
 
 # Application definition
 THIRD_PARTY_APPS = [
@@ -152,28 +144,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "config.wsgi.application"
 
-# def get_env_variable(var_name):
-#   try:
-#     return os.environ[var_name]
-#   except KeyError:
-#     error_msg = 'Set the {} environment variable'.format(var_name)
-#     raise ImproperlyConfigured(error_msg)
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-# 		'NAME': get_env_variable('DATABASE'),
-#         'USER': get_env_variable('DB_USER'),
-#         'PASSWORD': get_env_variable('DB_PASSWORD'),
-#         'HOST': get_env_variable('DB_HOST'),
-#         'PORT': get_env_variable('DB_PORT'),
-#         'OPTIONS':{
-#             'init_command' : "SET sql_mode='STRICT_TRANS_TABLES'"
-#         }
-#     }
-# }
-# Database
-# https://docs.djangoproject.com/en/4.1/ref/settings/#databases
+
+ 
 
 DATABASES = {
     "default": {

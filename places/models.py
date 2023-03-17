@@ -10,8 +10,6 @@ class Place(CommonModel):
         default="",
     )
     description = models.TextField()
-    address = models.CharField(max_length=250,)
-
     photo = models.ImageField(null=True)
     qr_img = models.ImageField(null=True)
 
