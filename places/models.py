@@ -13,14 +13,11 @@ class Place(CommonModel):
     photo = models.ImageField(null=True)
     qr_img = models.ImageField(null=True)
 
-
     owner = models.ForeignKey(
         "users.User",
         on_delete=models.CASCADE,
         related_name="places",
     )
 
-    
-    
     def __str__(self) -> str:
         return self.name
